@@ -1,0 +1,8 @@
+function [] = DrawCar(idx_car,idx_lane)
+%UNTITLED13 Summary of this function goes here
+%   Detailed explanation goes here
+    global CAR_
+    rectangle('Position');
+
+end
+

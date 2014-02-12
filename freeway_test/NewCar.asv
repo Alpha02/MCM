@@ -1,0 +1,41 @@
+function [] = NewCar()
+%UNTITLED2 Summary of this function goes here
+%   Detailed explanation goes here
+    global CAR_SPEED;
+    global CAR_TIME_TURNING;
+    global CAR_LOCATION_LANE;
+    global CAR_LOCATION_LENGTH;
+    global CAR_TYPE;
+
+    global PROP_PROBABILITY;
+    global PROP_LENGTH;
+    global PROP_SPEED;
+    global PROP_RADIUS_TURNING;
+    global PROP_DANGEROUS_DISTANCE;
+
+    global HUMANFACTOR_DISTANCE_ERROR;
+    global HUMANFACTOR_SPEEDSCALE_ERROR;
+    global lanes;
+    global cars;
+    size_temp=size(cars(:,:));
+    new_idx=size_temp(1)+1;
+    
+    %choose a random type of car
+    number_rand=rand();
+    i=1;
+    sum_prob=GetCarStyleProperty(1,PROP_PROBABILITY);
+    while(number_rand>sum_prob)
+        i=i+1;
+        sum_prob=sum_prob+GetCarStyleProperty(i,PROP_PROBABILITY);
+    end
+    cars(new_idx,CAR_TYPE)=i;
+    cars(new_idx,CAR_SPEED)=GetCarStyleProperty(i,PROP_SPEED)*normrnd(1,HUMANFACTOR_SPEEDSCALE_ERROR);
+    cars(new_idx,CAR_TIME_TURNING)=CalcCarTurningTime(GetCarStyleProperty(i,PROP_RADIUS_TURNING),cars(new_idx,CAR_SPEED));
+    cars(new_idx,CAR_LOCATION_LANE)=0;
+    cars(new_idx,CAR_LOCATION_LENGTH)=0;
+    
+    
+    
+    
+end
+

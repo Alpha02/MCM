@@ -1,0 +1,12 @@
+s=size(plane_list(:,:));
+plane_speed=100;
+for i=1:100
+for i=1:s(1)
+    plane_list(i,2)=plane_list(i,2)+plane_speed*cos(plane_list(i,4));
+    plane_list(i,3)=plane_list(i,3)+plane_speed*sin(plane_list(i,4));
+    
+end
+    cla();
+    draw(plane_list);
+    pause(0.01);
+end

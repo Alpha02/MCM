@@ -1,0 +1,23 @@
+function [ output_args ] = LaneAddCar( lane_idx,car_idx)
+%UNTITLED7 Summary of this function goes here
+%   Detailed explanation goes here
+    global CAR_POSITION;
+    global CAR_LANE;
+    global lanes;
+    my_lane=GetCarProperty(idx_car,CAR_LANE);
+    my_idx=find(lanes(my_lane,:)==idx_car);
+    if(my_idx)
+
+        if(my_idx==1)
+            target_car=0;
+        else
+            target_car=lanes(my_lane,my_idx-1);
+        end
+    end
+    for idx2=size_lanes(2)+1:-1:idx+1
+        lanes(lane_idx,idx2)=lanes(lane_idx,idx2-1);
+    end;
+    lanes(lane_idx,idx)=car_idx;
+    
+end
+

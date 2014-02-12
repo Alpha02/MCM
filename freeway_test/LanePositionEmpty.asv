@@ -1,0 +1,31 @@
+function [ output_args ] = LanePositionEmpty( lane_idx,position_start,position_end)
+%UNTITLED7 Summary of this function goes here
+%   Detailed explanation goes here
+    global CAR_POSITION;
+    global CAR_TYPE;
+    global PROP_LENGTH;
+    global lanes;
+    output_args=true;
+    idx=1;
+    size_lanes=size(lanes);
+
+    while idx<=size_lanes(2)
+        if (lanes(lane_idx,idx)==0)
+            break;
+        end;
+        tmp_position=GetCarProperty(lanes(lane_idx,idx),CAR_POSITION);
+        tmp_car_style=GetCarProperty(lanes(lane_idx,idx),CAR_TYPE);
+        tmp_car_length=GetCarStyleProperty(tmp_car_style,PROP_LENGTH);
+        if(tmp_position>=position_start)&&(tmp_position-tmp_car_length<position_start)
+            output_args=false;
+        end;
+        if(tmp_position<position_start && tmp_position>position_end)
+            output_args=false;           
+        end;
+        if(tmp_position<position_start && tmp_position>position_end)
+            output_args=false;           
+        end;
+        idx=idx+1;
+    end;
+end
+

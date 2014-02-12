@@ -1,0 +1,6 @@
+function [] = DrawCar()
+%UNTITLED13 Summary of this function goes here
+%   Detailed explanation goes here
+            rectangle('Position',[cars(tmp_car,CAR_POSITION),lane_idx,cars(tmp_car,CAR_LENGTH),1
+end
+

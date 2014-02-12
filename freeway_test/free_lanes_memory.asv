@@ -1,0 +1,10 @@
+function [ output_args ] = free_lanes_memory()
+%UNTITLED3 Summary of this function goes here
+%   Detailed explanation goes here
+    global lanes;
+    global LANE_NUMBER;
+    size_lanes=size(lanes);
+            while idx<=size_lanes(2)
+
+end
+
